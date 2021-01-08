@@ -1,0 +1,27 @@
+afile=File.new("C:\Users\Home\Desktop\hello.txt","r+")
+#afile.syswrite("Just random things")
+arr=IO.readlines("C:\Users\Home\Desktop\hello.txt")
+puts arr
+if afile
+    puts afile.sysread(2)
+else
+    puts "svxc"
+end
+
+begin
+    puts "before raise"
+    raise "Error "
+    puts "After raise"
+rescue
+    puts "Thanks for saving me"
+
+ensure
+    puts "I ensure things"
+    
+end
+
+
+    
+    
+    
+    

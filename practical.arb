@@ -1,0 +1,66 @@
+puts "hey there"
+class A
+    def initialize(x,y)
+        @a=x
+        @b=y
+        
+    end
+    def sum1
+        puts @a+@b
+    end
+    def compare
+        if @a>@b
+            puts "#{@a} is greater than #{@b}"
+            
+        
+        elsif @a<@b
+            puts "#{@b} is greater than #{@b}"
+        
+        else
+            puts "#{@a} equals to #{@b}"
+            
+        end
+    end
+    def to_s
+        "a:#{@a}  b:#@b"
+    end
+
+end
+class B < A
+    def initialize(x,y)
+        super(x,y)
+    end
+    def hello
+       puts "Hello Ruby!"
+    end
+    def sum1
+        puts @a-@b
+    end
+ end
+
+
+ #=============================main method
+#smp=Sample.new
+#smp.hello
+obj=B.new(16,4)
+x=obj.class
+if x==B
+    puts "yes"
+end
+#obj.compare
+=begin
+str=Array.new
+str=%w(jim pam dwight)
+str.each do |i|
+    puts "I like #{i}"
+end
+puts "Enter your name"
+name=gets
+puts "Hey there, "+name
+=end
+str="Hello there"
+for i in (0..5)
+    puts str[i]+" "
+end
+
+

@@ -1,0 +1,142 @@
+#----------------Type casting-------------------
+=begin
+x="12"
+puts x*2
+puts x.to_i*2
+y=12.to_f/9
+puts y.class
+=end
+
+#-----------------visibility scope----------------
+=begin
+class Sample
+    PI=3.14
+    @@cnt=0
+    def initialize(x)
+        @a=x
+        @@cnt=@@cnt+1
+    end
+    def obj_count
+        puts @@cnt;
+    end
+    def to_s
+        "name :#@a"
+    end
+end
+
+obj1=Sample.new("Dwight")
+puts obj1
+obj1.obj_count
+obj2=Sample.new("Jim")
+puts Sample::PI
+=end
+#-----------------Array,String------------
+=begin
+def fun(*arr)
+    arr
+end
+a= fun(1,2,3,4,5)
+a.each do |i|
+    puts i*2
+end
+=end
+#-----------------date time------------------
+=begin
+time1=Time.new
+puts time1.inspect
+puts Time.local(2021,1,8)
+puts time1.to_a
+puts time1.strftime("%d/%m/%Y %H:%M:%S")
+=end
+#------------------------Symbol---------------------
+puts "hello".object_id
+puts "hello".object_id
+puts :hello.object_id
+puts :hello.object_id
+#-----------------------operator overloading----------------------
+=begin
+class Sample
+    def initialize(w,b)
+        @width=w
+        @bredth=b
+    end
+    def width
+        @width
+    end
+    def bredth
+        @bredth
+    end
+    def +(other)
+       Sample.new(@width+other.width,@bredth+other.bredth)
+    end
+    def to_s
+        "Width : #@width Bredth: #@bredth"
+    end
+end
+
+x=Sample.new(5,10)
+y=Sample.new(10,5)
+z= x + y
+puts z
+=end
+#--------------hash------------------
+=begin
+h=Hash['name'=>'Vibhuti','surname'=>'Patel']
+puts h['name']
+
+
+def print_block
+    yield
+end
+print_block{puts "blobk called"}
+
+sos= -> (x) {puts "do not panic, #{x}. you will be rescued "}
+sos.("vibhu")
+=end
+#---------------------enumeration--------------------------
+=begin
+en=[1,2,3,4].select{|i| i>2}
+puts en
+en1=[1,2,3,4].map{|i| i*i}
+en2=[1,2,3,4].inject(:*)
+puts en2
+en3=%w(one two three four five).each
+puts en3.class
+=end
+#----------------missing method---------------
+class Office
+    def initialize(x)
+        @name=x
+    end
+    def display
+        puts "Favourite character : #@name"
+    end
+    def method_missing(m,*arg,&block)
+        puts "We don't have function you looking for"
+    end
+end
+module Hello
+    PI=3.14
+    def Hello.fun
+        puts "hello there "
+    end
+    
+end
+Hello.fun
+
+class Office
+    def display
+        puts "Haha i changed it."
+    end
+end
+
+o=Office.new("Dwight")
+o.display
+puts o.instance_variables
+puts 
+puts o.respond_to?("display")
+puts o.class.name
+#puts (1..9).include?(6)
+#puts (1..5).include?(6)
+
+
